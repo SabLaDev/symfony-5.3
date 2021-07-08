@@ -82,7 +82,6 @@ class Product
 
         return $this;
     }
-
     public function getDescription(): ?string
     {
         return $this->description;

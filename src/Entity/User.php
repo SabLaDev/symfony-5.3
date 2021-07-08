@@ -59,19 +59,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $phoneNumber;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Address::class, mappedBy="id_user")
-     */
-    private $id_address;
-
+   
     /**
      * @ORM\OneToMany(targetEntity=Address::class, mappedBy="user_id")
      */
     private $addresses;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Facture::class, inversedBy="username")
+     */
+    private $facture;
+
     public function __construct()
     {
-        $this->id_address = new ArrayCollection();
         $this->addresses = new ArrayCollection();
     }
 
@@ -207,6 +207,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->firstName;
     }
 
+    public function getFullName(): ?string
+    {
+        return $this->getFamilyName().' '.$this->getFirstName();
+    }
+
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
@@ -226,35 +231,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Address[]
-     */
-    public function getIdAddress(): Collection
-    {
-        return $this->id_address;
-    }
-
-    public function addIdAddress(Address $idAddress): self
-    {
-        if (!$this->id_address->contains($idAddress)) {
-            $this->id_address[] = $idAddress;
-            $idAddress->setIdUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdAddress(Address $idAddress): self
-    {
-        if ($this->id_address->removeElement($idAddress)) {
-            // set the owning side to null (unless already changed)
-            if ($idAddress->getIdUser() === $this) {
-                $idAddress->setIdUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|Address[]
@@ -282,6 +258,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             //    $address->setUserId(null);
             //}
         }
+
+        return $this;
+    }
+
+    public function getFacture(): ?Facture
+    {
+        return $this->facture;
+    }
+
+    public function setFacture(?Facture $facture): self
+    {
+        $this->facture = $facture;
 
         return $this;
     }

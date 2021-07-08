@@ -46,7 +46,7 @@
             <div class="container">
                 <div class="row">
                     <div class="span6">
-                        <p class="topcontact"><i class="icon-phone"></i> +62 088 999 123</p>
+                        <p class="topcontact"><i class="icon-phone"></i> Contactez-nous: +62 088 999 123</p>
                     </div>
                     <div class="span6">
 
@@ -86,10 +86,26 @@
                                     <li>
                                         <a href="{{ path('contact_new') }}">Contact </a>
                                     </li>
+                                    <li class="dropdown">
+                                        <a class= "dropdown-toggle" role="button"  data-bs-toggle="dropdown" aria-expanded="false">Product</a>
+                                        <ul class="dropdown-menu">
+                                           <li> <a class="dropdown-item" href="{{ path('product_index') }}">Product List </a></li>
+                                           <li> <a class="dropdown-item" href="{{ path('product_new') }}">Adding New Product </a></li>
+                                        </ul>
+                                    </li>
                                     <li>
                                       <a href="/basket">
                                         <span class="btn btn-theme btn-rounded basket-btn">
-                                            <i class="icon-shopping-cart icon-white"></i> <span class = "price"> 0.00</span> €
+                                            <i class="icon-shopping-cart icon-white"></i> 
+                                            
+                                            {% set sum = 0 %}
+                                            {% if app.session.get('listBasket') %} 
+                                                {% for item in app.session.get('listBasket') %}
+                                                    {% set sum = sum + (item.product.price * item.quantity) %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        <span class = "price"> {{sum}}</span> €
+                                            
                                         </span>
                                      </a>
                                     </li>
