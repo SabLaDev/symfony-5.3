@@ -1,266 +1,171 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-	Product
-{% endblock %}
+{% block title %}Product{% endblock %}
 
 {% block body %}
-	<section id="inner-headline">
-		<div class="container">
-			<div class="row">
-				<div class="span12">
-					<div class="inner-heading">
-						<ul class="breadcrumb">
-							<li>
-								<a href="index.html">
-									Home
-								</a>
-								<i class="icon-angle-right"></i>
-							</li>
-							<li>
-								<a href="#">
-									Portfolio
-								</a>
-								<i class="icon-angle-right"></i>
-							</li>
-							<li class="active">
-								Portfolio detail
-							</li>
-						</ul>
-						<h2>
-							Portfolio detail
-						</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="inner-heading">
+                        <ul class="breadcrumb">
+                            <li><a href="index.html">Home</a> <i class="icon-angle-right"></i></li>
+                            <li><a href="#">Portfolio</a> <i class="icon-angle-right"></i></li>
+                            <li class="active">Portfolio detail</li>
+                        </ul>
+                        <h2>Portfolio detail</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<section id="content">
-		<div class="container">
-			<div class="row">
-				<div class="span12">
-					<article class="noborder">
-						<div class="top-wrapper">
-							<div class="post-heading">
-								<h3>
-									<a href="#">
-										{{ product.name }}
-									</a>
-								</h3>
-							</div>
-							<!-- start flexslider -->
-							<div class="portfolio-detail">
-								<img src="img/dummies/works/detail/1.jpg" alt=""/>
-							</div>
-							<!-- end flexslider -->
-						</div>
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <article class="noborder">
+                        <div class="top-wrapper">
+                            <div class="post-heading">
+                                <h3><a href="#">{{ product.name }}</a></h3>
+                            </div>
+                            <!-- start flexslider -->
+                            <div class="portfolio-detail">
+                                <img src="img/dummies/works/detail/1.jpg" alt="" />
+                            </div>
+                            <!-- end flexslider -->
+                        </div>
 
-						<p>
-							{{ product.description }}
-						</p>
-						<form action='{{path('basket')}}' method='post' class="add-to-basket-form">
-							<div>
-								<input type="hidden" name="price" value="{{ product.price }}">
-								<input type="hidden" name="product" value="{{ product.id }}">
-								<div>
-									<div>
-										<label for="quantity">
-											Quantité
-										</label>
-										<input type="text" id="quantity"></div>
-									<div>
-										<button class="btn btn-primary">
-											Ajouter au panier
-										</button>
-									</div>
-								</div>
-							</form>
+                        <p>{{ product.description }}</p>
 
-							{# <script>
-								let basket = {};
-								document.querySelector('.add-to-basket-form').addEventListener("submit", 
-                                function (event) 
-                                {
-                                    event.preventDefault();
-                                    const data = new FormData(this);
-                                    const actualBasket = parseFloat(document.querySelector('.price').innerHTML);
-                                    console.log(actualBasket);
+                        <form action="{{ path('basket') }}" method="post">
+                        <div>
+                            <input type="hidden" name="product" value="{{ product.id }}">
+                            <div>
+                                <label for="quantity">Quantité</label>
+                                <input type="text" id="quantity" name="quantity">
+                            </div>
+                            <div>
+                                <button class="btn btn-primary">Ajouter au panier</button>
+                            </div>
+                        </div>
+                        </form>
+                    </article>
 
-                                    const total = parseFloat(data.get('price')) * parseInt(data.get('quantity'));
-                                    const newTotal = actualBasket + parseFloat(total);
+                    <div class="row">
+                        <div class="span12">
+                            <h4>Related works</h4>
+                        </div>
+                        <div class="grid related-works cs-style-4">
+                            <div class="span2">
+                                <div class="item">
+                                    <figure>
+                                        <div><img src="img/dummies/works/1.jpg" alt="" /></div>
+                                        <figcaption>
+                                            <div>
+                          <span>
+											<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here"><i class="icon-plus icon-circled icon-bglight"></i></a>
+											</span>
+                                                <span>
+											<a href="#"><i class="icon-file icon-circled icon-bglight"></i></a>
+											</span>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="item">
+                                    <figure>
+                                        <div><img src="img/dummies/works/2.jpg" alt="" /></div>
+                                        <figcaption>
+                                            <div>
+                          <span>
+											<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here"><i class="icon-plus icon-circled icon-bglight"></i></a>
+											</span>
+                                                <span>
+											<a href="#"><i class="icon-file icon-circled icon-bglight"></i></a>
+											</span>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="item">
+                                    <figure>
+                                        <div><img src="img/dummies/works/3.jpg" alt="" /></div>
+                                        <figcaption>
+                                            <div>
+                          <span>
+											<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here"><i class="icon-plus icon-circled icon-bglight"></i></a>
+											</span>
+                                                <span>
+											<a href="#"><i class="icon-file icon-circled icon-bglight"></i></a>
+											</span>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="item">
+                                    <figure>
+                                        <div><img src="img/dummies/works/4.jpg" alt="" /></div>
+                                        <figcaption>
+                                            <div>
+                          <span>
+											<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here"><i class="icon-plus icon-circled icon-bglight"></i></a>
+											</span>
+                                                <span>
+											<a href="#"><i class="icon-file icon-circled icon-bglight"></i></a>
+											</span>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="item">
+                                    <figure>
+                                        <div><img src="img/dummies/works/5.jpg" alt="" /></div>
+                                        <figcaption>
+                                            <div>
+                          <span>
+											<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here"><i class="icon-plus icon-circled icon-bglight"></i></a>
+											</span>
+                                                <span>
+											<a href="#"><i class="icon-file icon-circled icon-bglight"></i></a>
+											</span>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="span2">
+                                <div class="item">
+                                    <figure>
+                                        <div><img src="img/dummies/works/6.jpg" alt="" /></div>
+                                        <figcaption>
+                                            <div>
+                          <span>
+											<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here"><i class="icon-plus icon-circled icon-bglight"></i></a>
+											</span>
+                                                <span>
+											<a href="#"><i class="icon-file icon-circled icon-bglight"></i></a>
+											</span>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                    document.querySelector('.price').innerHTML = actualBasket + parseFloat(total);
+                </div>
 
-                                    //data.forEach(function (value, key));
+            </div>
+        </div>
+    </section>
 
-									if (basket[{{ product.id }}] === undefined) {
-										basket[{{ product.id }}] = {
-											product: {{ product.id }},
-											quantity: parseInt(data.get('quantity'))
-										};
-									} 
-									else 
-									{
-										basket[{{ product.id }}]['quantity'] = basket[{{ product.id }}]['quantity'] + parseInt(data.get('quantity'));
-									}
-                                })
-							</script> #}
-
-						</article>
-
-						<div class="row">
-							<div class="span12">
-								<h4>
-									Related works
-								</h4>
-							</div>
-							<div class="grid related-works cs-style-4">
-								<div class="span2">
-									<div class="item">
-										<figure>
-											<div>
-												<img src="img/dummies/works/1.jpg" alt=""/>
-											</div>
-											<figcaption>
-												<div>
-													<span>
-														<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here">
-															<i class="icon-plus icon-circled icon-bglight"></i>
-														</a>
-													</span>
-													<span>
-														<a href="#">
-															<i class="icon-file icon-circled icon-bglight"></i>
-														</a>
-													</span>
-												</div>
-											</figcaption>
-										</figure>
-									</div>
-								</div>
-								<div class="span2">
-									<div class="item">
-										<figure>
-											<div>
-												<img src="img/dummies/works/2.jpg" alt=""/>
-											</div>
-											<figcaption>
-												<div>
-													<span>
-														<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here">
-															<i class="icon-plus icon-circled icon-bglight"></i>
-														</a>
-													</span>
-													<span>
-														<a href="#">
-															<i class="icon-file icon-circled icon-bglight"></i>
-														</a>
-													</span>
-												</div>
-											</figcaption>
-										</figure>
-									</div>
-								</div>
-								<div class="span2">
-									<div class="item">
-										<figure>
-											<div>
-												<img src="img/dummies/works/3.jpg" alt=""/>
-											</div>
-											<figcaption>
-												<div>
-													<span>
-														<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here">
-															<i class="icon-plus icon-circled icon-bglight"></i>
-														</a>
-													</span>
-													<span>
-														<a href="#">
-															<i class="icon-file icon-circled icon-bglight"></i>
-														</a>
-													</span>
-												</div>
-											</figcaption>
-										</figure>
-									</div>
-								</div>
-								<div class="span2">
-									<div class="item">
-										<figure>
-											<div>
-												<img src="img/dummies/works/4.jpg" alt=""/>
-											</div>
-											<figcaption>
-												<div>
-													<span>
-														<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here">
-															<i class="icon-plus icon-circled icon-bglight"></i>
-														</a>
-													</span>
-													<span>
-														<a href="#">
-															<i class="icon-file icon-circled icon-bglight"></i>
-														</a>
-													</span>
-												</div>
-											</figcaption>
-										</figure>
-									</div>
-								</div>
-								<div class="span2">
-									<div class="item">
-										<figure>
-											<div>
-												<img src="img/dummies/works/5.jpg" alt=""/>
-											</div>
-											<figcaption>
-												<div>
-													<span>
-														<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here">
-															<i class="icon-plus icon-circled icon-bglight"></i>
-														</a>
-													</span>
-													<span>
-														<a href="#">
-															<i class="icon-file icon-circled icon-bglight"></i>
-														</a>
-													</span>
-												</div>
-											</figcaption>
-										</figure>
-									</div>
-								</div>
-								<div class="span2">
-									<div class="item">
-										<figure>
-											<div>
-												<img src="img/dummies/works/6.jpg" alt=""/>
-											</div>
-											<figcaption>
-												<div>
-													<span>
-														<a href="img/dummies/works/big.png" data-pretty="prettyPhoto[gallery1]" title="Portfolio caption here">
-															<i class="icon-plus icon-circled icon-bglight"></i>
-														</a>
-													</span>
-													<span>
-														<a href="#">
-															<i class="icon-file icon-circled icon-bglight"></i>
-														</a>
-													</span>
-												</div>
-											</figcaption>
-										</figure>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-		</section>
-
-	{% endblock %}
+{% endblock %}

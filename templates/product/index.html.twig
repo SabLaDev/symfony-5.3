@@ -131,20 +131,21 @@
                                         <h3><a href="{{ path('product_show', {'id' : product.id}) }}">{{ product.name }}</a></h3>
                                     </div>
 
-                                    <img src="img/dummies/blog/img1.jpg" alt="" />
+                                    <img src="img/dummies/blog/golf_img1.jpg" alt="" />
                                 </div>
                                 <div class="meta-post">
                                     <ul>
                                         <li><i class="icon-file"></i></li>
                                         <li>By <a href="#" class="author">{{ product.createdBy.email }}</a></li>
                                         <li>On <a href="#" class="date">{{ product.createdAt | date('d-m-Y') }}</a></li>
-                                        <li>Prix: {{ product.price }}</li>
+                                        <li>Prix: {{ product.price }} € </li>
                                     </ul>
                                 </div>
                                 <div class="post-entry">
                                     <p>{{ product.description }}</p>
                                     <a href="{{ path('product_show', {'id' : product.id}) }}" class="readmore">Read more <i class="icon-angle-right"></i></a>
                                 </div>
+                            <button type="button" class="btn btn-success"> + Ajouter à votre panier</button>
                             </div>
                         </div>
                     </article>
