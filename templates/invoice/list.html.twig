@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Factures
+    
+{% endblock %}
+
+{% block body %}
+<table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">N° facture</th>
+                    <th scope="col">Date</th>            
+                </tr>
+                {% for invoice in invoices %}
+                <tr>
+                    <td> <a href="{{ path('invoice_show', {invoice : invoice.id})}}"> {{ invoice.id }}</a></td>
+                    <td> <a href="{{ path('invoice_show', {invoice : invoice.id})}}"> {{ invoice.date | date('d-m-y') }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    
+{% endblock %}

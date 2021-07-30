@@ -145,8 +145,18 @@
                                     <p>{{ product.description }}</p>
                                     <a href="{{ path('product_show', {'id' : product.id}) }}" class="readmore">Read more <i class="icon-angle-right"></i></a>
                                 </div>
-                            <button type="button" class="btn btn-success"> + Ajouter à votre panier</button>
-                            </div>
+                                <form action="{{ path('basket') }}" method="post">
+                                    <div>
+                                        <input type="hidden" name="product" value="{{ product.id }}">
+                                        <div>
+                                            <label for="quantity">Quantité</label>
+                                            <input type="hidden" id="quantity" name="quantity"value="1">
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-primary">Ajouter au panier</button>
+                                        </div>
+                                    </div>
+                                </form>
                         </div>
                     </article>
                     {% endfor %}
